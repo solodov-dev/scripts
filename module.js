@@ -1,12 +1,13 @@
 #!/usr/bin/env node
+
 path = require('path');
 fs = require('fs');
 
-const MODULE_NAME = process.argv[2];
+let MODULE_NAME = process.argv[2];
 const CURRENT_DIR = process.cwd();
 
 if (!MODULE_NAME) {
-  throw new Error('No module name specified!');
+  MODULE_NAME = path.basename(path.resolve(CURRENT_DIR));
 }
 
 const PATH = path.join(CURRENT_DIR, MODULE_NAME);
@@ -32,7 +33,7 @@ const SCSS_CONTENT = `.${MODULE_NAME} {
 try {
   fs.writeFile(TSX_PATH, TSX_CONTENT, (err) => err);
   fs.writeFile(SCSS_PATH, SCSS_CONTENT, (err) => err);
-  console.log('Files are written: \n',TSX_PATH, '\n', SCSS_PATH);
+  console.log('Files have been written: \n',TSX_PATH, '\n', SCSS_PATH);
 } catch(e) {
   console.error(e);
 }
