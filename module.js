@@ -19,7 +19,9 @@ import styles from './${MODULE_NAME}.module.scss'
 
 export default function ${MODULE_NAME[0].toUpperCase() + MODULE_NAME.slice(1)}() { 
   return (
+    <div className={styles.${MODULE_NAME}}>
 
+    <div/>
   )
 }
 `
